@@ -140,10 +140,10 @@ User message holds both the context block and the question together. Putting the
 **Test query and response:**
 
 ```
-Query: [your test query]
-Response: [abbreviated response]
-Correctly grounded? [yes / no]
-Cited the right game? [yes / no]
+Query: What happens if you roll a 7 in Catan?
+Response: According to the Catan rules, when a 7 is rolled, no resources are produced. Every player with more than 7 resource cards in hand must discard half (rounded down). The player who rolled moves the robber to any terrain hex and steals one resource.
+Correctly grounded? yes
+Cited the right game? yes
 ```
 
 **One thing you changed from your original spec after seeing the actual output:**
