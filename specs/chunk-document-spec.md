@@ -15,20 +15,24 @@ Split a single rule book document into smaller chunks suitable for embedding and
 
 **Inputs:**
 
-| Parameter | Type | Description |
-|-----------|------|-------------|
-| `text` | `str` | The full text of a rule book document |
+
+| Parameter   | Type  | Description                                                     |
+| ----------- | ----- | --------------------------------------------------------------- |
+| `text`      | `str` | The full text of a rule book document                           |
 | `game_name` | `str` | The name of the game this document belongs to (e.g., `"Catan"`) |
+
 
 **Output:** `list[dict]`
 
 Each dict in the returned list contains exactly these keys:
 
-| Key | Type | Description |
-|-----|------|-------------|
-| `"text"` | `str` | The chunk text |
-| `"game"` | `str` | The game name (passed through from `game_name`) |
+
+| Key          | Type  | Description                                                         |
+| ------------ | ----- | ------------------------------------------------------------------- |
+| `"text"`     | `str` | The chunk text                                                      |
+| `"game"`     | `str` | The game name (passed through from `game_name`)                     |
 | `"chunk_id"` | `str` | A unique identifier for this chunk (e.g., `"catan_0"`, `"catan_1"`) |
+
 
 Returns an empty list `[]` if the input text is empty or produces no valid chunks.
 
@@ -116,11 +120,12 @@ handle these cases better, at the cost of more implementation complexity.
 **Actual chunk count produced across all 8 rule books:**
 
 ```
-[your answer here]
+149
 ```
 
 **One thing that surprised you or didn't match your expectations:**
 
 ```
-[your answer here]
+Seems like a low number of chunks
 ```
+
