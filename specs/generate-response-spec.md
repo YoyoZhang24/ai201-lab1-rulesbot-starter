@@ -81,7 +81,7 @@ You are a board game rules assistant. Answer questions using only the rule excer
 *Write the exact instruction you will use to tell the model to identify which game its answer comes from.*
 
 ```
-When answering, always state which game the rule comes from, using the game name shown in brackets in the context.
+Always state which game the rule comes from, using the game name shown in brackets in the context.
 
 Example: "According to the Catan rules, ..."
 ```

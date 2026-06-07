@@ -8,7 +8,7 @@ def generate_response(query, retrieved_chunks):
     """
     Generate a grounded answer from retrieved rule chunks.
 
-    TODO — Milestone 3:
+    — Milestone 3:
 
     `retrieved_chunks` is the list returned by retrieve(). Each item is a dict:
       - "text"     : the chunk text
@@ -36,4 +36,22 @@ def generate_response(query, retrieved_chunks):
         )
 
     # Your implementation here.
-    return "⚙️ Response generation not yet implemented. Complete Milestone 3 to activate answers."
+    for i in range(len(retrieved_chunks)):
+        retrieved_chunks[i]["text"] = f"[{retrieved_chunks[i]['game']}] {retrieved_chunks[i]['text']}"
+
+    context = "\n---\n".join([chunk["text"] for chunk in retrieved_chunks if chunk["distance"] < 0.75])
+
+    response = _client.chat.completions.create(
+      model = LLM_MODEL,
+      messages = [
+        {
+            "role": "system",
+            "content": "You are a board game rules assistant. Answer questions using only the rule excerpts provided in the context below. Do not use your general knowledge about any game. Always state which game the rule comes from, using the game name shown in brackets in the context. Example: 'According to the Catan rules, ...' If the answer is not present in the provided excerpts, say: 'I don't see that covered in the loaded rules.'"
+        },
+        {
+            "role": "user",
+            "content": f"Context:\n{context}\n\nQuestion: {query}"
+        }
+      ],
+    )
+    return response.choices[0].message.content
